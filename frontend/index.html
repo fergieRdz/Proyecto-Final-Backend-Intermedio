@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard RRHH</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Sistema de Gestión de Recursos Humanos</h1>
+    <div class="widget-clima">
+      <p id="fechaActual">Cargando fecha...</p>
+      <p id="climaActual">Cargando clima...</p>
+    </div>
+  </header>
+
+  <nav class="menu">
+    <a href="index.html">Inicio</a>
+    <a href="empleados.html">Empleados</a>
+    <a href="departamentos.html">Departamentos</a>
+    <a href="incidencias.html">Incidencias</a>
+  </nav>
+
+  <main class="contenedor">
+    <section class="cards-resumen">
+      <div class="card">
+        <h2>Total de empleados</h2>
+        <p id="totalEmployees">0</p>
+      </div>
+      <div class="card">
+        <h2>Incidencias recientes</h2>
+        <ul id="listaIncidencias"></ul>
+      </div>
+    </section>
+
+    <section class="tabla-seccion">
+      <h2>Empleados por departamento</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Departamento</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="tablaDepartamentosResumen"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

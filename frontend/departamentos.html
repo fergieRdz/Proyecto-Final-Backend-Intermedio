@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Departamentos</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="header-simple">
+    <h1>Departamentos</h1>
+  </header>
+
+  <nav class="menu">
+    <a href="index.html">Inicio</a>
+    <a href="empleados.html">Empleados</a>
+    <a href="departamentos.html">Departamentos</a>
+    <a href="incidencias.html">Incidencias</a>
+  </nav>
+
+  <main class="contenedor">
+    <section class="tabla-seccion">
+      <table>
+        <thead>
+          <tr>
+            <th>Clave</th>
+            <th>Departamento</th>
+            <th>Total</th>
+            <th>Ver empleados</th>
+          </tr>
+        </thead>
+        <tbody id="departmentsTable"></tbody>
+      </table>
+    </section>
+
+    <section class="tabla-seccion">
+      <h2>Empleados del departamento</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Género</th>
+          </tr>
+        </thead>
+        <tbody id="departmentEmployeesTable"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/departamentos.js"></script>
+</body>
+</html>

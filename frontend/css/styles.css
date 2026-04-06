@@ -1,0 +1,168 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f7fb;
+  color: #1f2937;
+}
+
+.header,
+.header-simple {
+  background: #1d4ed8;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.widget-clima {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 12px;
+  border-radius: 10px;
+  min-width: 210px;
+  text-align: right;
+}
+
+.menu {
+  background: #0f172a;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 14px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contenedor {
+  width: 90%;
+  max-width: 1100px;
+  margin: 30px auto;
+}
+
+.cards-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card,
+.formulario-card,
+.tabla-seccion {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card h2,
+.formulario-card h2,
+.tabla-seccion h2 {
+  margin-bottom: 16px;
+}
+
+.card p {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1d4ed8;
+}
+
+.busqueda {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+input,
+textarea,
+select,
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  margin-bottom: 12px;
+}
+
+button {
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1e40af;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+th {
+  background: #eff6ff;
+}
+
+.acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-secundario {
+  background: #475569;
+}
+
+.btn-peligro {
+  background: #dc2626;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .widget-clima {
+    text-align: center;
+  }
+
+  .busqueda {
+    flex-direction: column;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}

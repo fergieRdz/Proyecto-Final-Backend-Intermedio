@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Incidencias</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="header-simple">
+    <h1>Incidencias RRHH</h1>
+  </header>
+
+  <nav class="menu">
+    <a href="index.html">Inicio</a>
+    <a href="empleados.html">Empleados</a>
+    <a href="departamentos.html">Departamentos</a>
+    <a href="incidencias.html">Incidencias</a>
+  </nav>
+
+  <main class="contenedor">
+    <section class="formulario-card">
+      <h2>Agregar o editar incidencia</h2>
+      <form id="incidenciaForm">
+        <input type="hidden" id="id_incidencia" />
+        <input type="number" id="emp_no" placeholder="Número de empleado" required />
+        <input type="text" id="tipo" placeholder="Tipo" required />
+        <input type="date" id="fecha" required />
+        <textarea id="descripcion" placeholder="Descripción" required></textarea>
+        <select id="estatus" required>
+          <option value="">Selecciona estatus</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="En revisión">En revisión</option>
+          <option value="Resuelta">Resuelta</option>
+        </select>
+        <button type="submit">Guardar</button>
+      </form>
+    </section>
+
+    <section class="tabla-seccion">
+      <h2>Lista de incidencias</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Empleado</th>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Estatus</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="incidenciasTable"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/incidencias.js"></script>
+</body>
+</html>

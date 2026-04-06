@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empleados</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="header-simple">
+    <h1>Empleados</h1>
+  </header>
+
+  <nav class="menu">
+    <a href="index.html">Inicio</a>
+    <a href="empleados.html">Empleados</a>
+    <a href="departamentos.html">Departamentos</a>
+    <a href="incidencias.html">Incidencias</a>
+  </nav>
+
+  <main class="contenedor">
+    <section class="busqueda">
+      <input type="text" id="searchInput" placeholder="Buscar por nombre o número" />
+      <button id="searchBtn">Buscar</button>
+    </section>
+
+    <section class="tabla-seccion">
+      <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Género</th>
+            <th>Ingreso</th>
+            <th>Detalle</th>
+          </tr>
+        </thead>
+        <tbody id="employeesTable"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/empleados.js"></script>
+</body>
+</html>

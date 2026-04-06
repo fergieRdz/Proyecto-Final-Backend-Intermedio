@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalle del Empleado</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="header-simple">
+    <h1>Detalle del Empleado</h1>
+  </header>
+
+  <nav class="menu">
+    <a href="index.html">Inicio</a>
+    <a href="empleados.html">Empleados</a>
+    <a href="departamentos.html">Departamentos</a>
+    <a href="incidencias.html">Incidencias</a>
+  </nav>
+
+  <main class="contenedor">
+    <section class="card" id="detalleEmpleado"></section>
+
+    <section class="tabla-seccion">
+      <h2>Historial de títulos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Desde</th>
+            <th>Hasta</th>
+          </tr>
+        </thead>
+        <tbody id="titlesTable"></tbody>
+      </table>
+    </section>
+
+    <section class="tabla-seccion">
+      <h2>Historial de salarios</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Salario</th>
+            <th>Desde</th>
+            <th>Hasta</th>
+          </tr>
+        </thead>
+        <tbody id="salariesTable"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/detalle.js"></script>
+</body>
+</html>
