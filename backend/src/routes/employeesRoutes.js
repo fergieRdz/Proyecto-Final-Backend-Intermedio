@@ -1,0 +1,13 @@
+const express = require('express');
+const router = express.Router();
+const {
+  getEmployees,
+  getEmployeeById,
+  getEmployeeHistory
+} = require('../controllers/employeesController');
+
+router.get('/', getEmployees);
+router.get('/:id', getEmployeeById);
+router.get('/:id/historial', getEmployeeHistory);
+
+module.exports = router;
