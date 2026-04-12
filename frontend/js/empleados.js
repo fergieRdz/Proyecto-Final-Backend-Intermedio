@@ -3,10 +3,24 @@ const API_EMPLOYEES = 'http://localhost:3000/api/employees';
 async function cargarEmpleados(search = '') {
   try {
     const response = await fetch(`${API_EMPLOYEES}?search=${encodeURIComponent(search)}`);
+
+    if (!response.ok) {
+      throw new Error('No se pudieron cargar los empleados');
+    }
+
     const data = await response.json();
 
     const table = document.getElementById('employeesTable');
     table.innerHTML = '';
+
+    if (data.length === 0) {
+      table.innerHTML = `
+        <tr>
+          <td colspan="6">No se encontraron empleados</td>
+        </tr>
+      `;
+      return;
+    }
 
     data.forEach(emp => {
       table.innerHTML += `
@@ -21,12 +35,12 @@ async function cargarEmpleados(search = '') {
       `;
     });
   } catch (error) {
-    console.error(error);
+    console.error('Error:', error);
   }
 }
 
 document.getElementById('searchBtn').addEventListener('click', () => {
-  const value = document.getElementById('searchInput').value;
+  const value = document.getElementById('searchInput').value.trim();
   cargarEmpleados(value);
 });
 
