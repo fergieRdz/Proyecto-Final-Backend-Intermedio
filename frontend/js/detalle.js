@@ -3,6 +3,12 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
 async function cargarDetalle() {
+  if (!id) {
+    document.getElementById('detalleEmpleado').innerHTML =
+      '<p style="color:red;">No se especificó un empleado. <a href="empleados.html">Volver al listado</a></p>';
+    return;
+  }
+
   try {
     const detailResponse = await fetch(`${API_BASE}/${id}`);
     const detail = await detailResponse.json();

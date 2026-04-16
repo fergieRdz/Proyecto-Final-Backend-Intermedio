@@ -49,12 +49,18 @@ async function eliminarIncidencia(id) {
   if (!confirm('¿Seguro que deseas eliminar esta incidencia?')) return;
 
   try {
-    await fetch(`${API_INCIDENCIAS}/${id}`, {
+    const response = await fetch(`${API_INCIDENCIAS}/${id}`, {
       method: 'DELETE'
     });
+    if (!response.ok) {
+      const data = await response.json();
+      alert(`Error al eliminar: ${data.error || response.statusText}`);
+      return;
+    }
     cargarIncidencias();
   } catch (error) {
     console.error(error);
+    alert('Error de red al eliminar la incidencia');
   }
 }
 
@@ -81,13 +87,19 @@ document.getElementById('incidenciaForm').addEventListener('submit', async (even
     };
 
     const url = id ? `${API_INCIDENCIAS}/${id}` : API_INCIDENCIAS;
-    await fetch(url, options);
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      const data = await response.json();
+      alert(`Error al guardar: ${data.error || response.statusText}`);
+      return;
+    }
 
     document.getElementById('incidenciaForm').reset();
     document.getElementById('id_incidencia').value = '';
     cargarIncidencias();
   } catch (error) {
     console.error(error);
+    alert('Error de red al guardar la incidencia');
   }
 });
 

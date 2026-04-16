@@ -2,48 +2,55 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Incidencias RRHH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard RRHH</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <h1>Incidencias RRHH</h1>
-  <button onclick="cargarIncidencias()">Ver incidencias</button>
-  <ul id="lista"></ul>
+  <header class="header">
+    <h1>Sistema de Gestión de Recursos Humanos</h1>
+    <div class="widget-clima">
+      <div id="fechaActual"></div>
+      <div id="climaActual"></div>
+    </div>
+  </header>
 
-  <script>
-    async function cargarIncidencias() {
-      try {
-        console.log('Cargando incidencias...');
-        const res = await fetch('http://localhost:3000/api/incidencias');
-        console.log('Respuesta recibida:', res.status);
-        
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        
-        const data = await res.json();
-        console.log('Datos recibidos:', data);
+  <nav class="menu">
+    <a href="index.html">Inicio</a>
+    <a href="empleados.html">Empleados</a>
+    <a href="departamentos.html">Departamentos</a>
+    <a href="incidencias.html">Incidencias</a>
+  </nav>
 
-        const lista = document.getElementById('lista');
-        lista.innerHTML = '';
+  <main class="contenedor">
+    <div class="cards-resumen">
+      <div class="card">
+        <h2>Total de empleados</h2>
+        <p id="totalEmployees">Cargando...</p>
+      </div>
+    </div>
 
-        if (data.length === 0) {
-          lista.innerHTML = '<li>No hay incidencias registradas</li>';
-          return;
-        }
+    <div class="cards-resumen">
+      <section class="tabla-seccion">
+        <h2>Empleados por departamento</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Departamento</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="tablaDepartamentosResumen"></tbody>
+        </table>
+      </section>
 
-        data.forEach(item => {
-          const li = document.createElement('li');
-          li.textContent = `${item.id_incidencia} - ${item.first_name} ${item.last_name} - ${item.tipo} - ${item.descripcion} - ${item.estatus}`;
-          lista.appendChild(li);
-        });
-        
-        console.log('Incidencias cargadas correctamente');
-      } catch (error) {
-        console.error('Error al cargar incidencias:', error);
-        const lista = document.getElementById('lista');
-        lista.innerHTML = `<li style="color: red;">Error: ${error.message}</li>`;
-      }
-    }
-  </script>
+      <section class="tabla-seccion">
+        <h2>Incidencias recientes</h2>
+        <ul id="listaIncidencias"></ul>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
