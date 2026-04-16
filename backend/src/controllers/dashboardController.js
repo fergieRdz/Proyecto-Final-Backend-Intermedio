@@ -2,6 +2,7 @@ const db = require('../config/db');
 
 const getResumen = (req, res) => {
   const totalEmployeesSql = 'SELECT COUNT(*) AS total_employees FROM employees';
+
   const employeesByDepartmentSql = `
     SELECT d.dept_name, COUNT(de.emp_no) AS total
     FROM departments d
@@ -9,6 +10,9 @@ const getResumen = (req, res) => {
     GROUP BY d.dept_name
     ORDER BY total DESC
   `;
+
+  const totalIncidenciasSql = 'SELECT COUNT(*) AS total_incidencias FROM incidencias_rrhh';
+
   const recentIncidenciasSql = `
     SELECT id_incidencia, emp_no, tipo, fecha, estatus
     FROM incidencias_rrhh
@@ -17,30 +21,27 @@ const getResumen = (req, res) => {
   `;
 
   db.query(totalEmployeesSql, (error1, totalResult) => {
-    if (error1) {
-      return res.status(500).json({ error: 'Error al obtener total de empleados' });
-    }
+    if (error1) return res.status(500).json({ error: 'Error al obtener total de empleados' });
 
     db.query(employeesByDepartmentSql, (error2, departmentsResult) => {
-      if (error2) {
-        return res.status(500).json({ error: 'Error al obtener empleados por departamento' });
-      }
+      if (error2) return res.status(500).json({ error: 'Error al obtener empleados por departamento' });
 
-      db.query(recentIncidenciasSql, (error3, incidenciasResult) => {
-        if (error3) {
-          return res.status(500).json({ error: 'Error al obtener incidencias recientes' });
-        }
+      db.query(totalIncidenciasSql, (error3, incidenciasTotal) => {
+        if (error3) return res.status(500).json({ error: 'Error al obtener total de incidencias' });
 
-        res.json({
-          totalEmployees: totalResult[0].total_employees,
-          employeesByDepartment: departmentsResult,
-          recentIncidencias: incidenciasResult
+        db.query(recentIncidenciasSql, (error4, incidenciasResult) => {
+          if (error4) return res.status(500).json({ error: 'Error al obtener incidencias recientes' });
+
+          res.json({
+            totalEmployees:        totalResult[0].total_employees,
+            employeesByDepartment: departmentsResult,
+            totalIncidencias:      incidenciasTotal[0].total_incidencias,
+            recentIncidencias:     incidenciasResult
+          });
         });
       });
     });
   });
 };
 
-module.exports = {
-  getResumen
-};
+module.exports = { getResumen };

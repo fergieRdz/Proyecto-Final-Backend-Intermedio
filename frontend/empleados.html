@@ -19,13 +19,36 @@
   </nav>
 
   <main class="contenedor">
-    <section class="busqueda">
-      <input type="text" id="searchInput" placeholder="Buscar por nombre o número" />
-      <button id="searchBtn">Buscar</button>
-      <button onclick="cargarEmpleados()">Ver empleados</button>
+
+    <section class="formulario-card" style="margin-bottom: 24px;">
+      <h2>Agregar / Editar empleado</h2>
+      <form id="empleadoForm">
+        <input type="hidden" id="emp_no_edit" />
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0 16px;">
+          <input type="text"  id="first_name" placeholder="Nombre"    required />
+          <input type="text"  id="last_name"  placeholder="Apellido"  required />
+          <select id="gender" required>
+            <option value="">Selecciona género</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+          </select>
+          <input type="date" id="hire_date"  required title="Fecha de ingreso" />
+          <input type="date" id="birth_date" required title="Fecha de nacimiento" />
+        </div>
+        <div style="display:flex; gap:12px; margin-top:4px;">
+          <button type="submit" style="flex:1;">Guardar empleado</button>
+          <button type="button" id="cancelBtn" style="flex:0 0 auto; width:auto; background:#94a3b8; display:none;">
+            Cancelar
+          </button>
+        </div>
+      </form>
     </section>
 
     <section class="tabla-seccion">
+      <div class="busqueda">
+        <input type="text" id="searchInput" placeholder="Buscar por nombre o número de empleado" />
+        <button id="searchBtn">Buscar</button>
+      </div>
       <table>
         <thead>
           <tr>
@@ -35,15 +58,15 @@
             <th>Género</th>
             <th>Ingreso</th>
             <th>Detalle</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody id="employeesTable"></tbody>
       </table>
     </section>
+
   </main>
 
   <script src="js/empleados.js"></script>
-
-  
 </body>
 </html>

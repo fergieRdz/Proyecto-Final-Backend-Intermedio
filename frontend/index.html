@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard RRHH</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <header class="header">
@@ -23,32 +24,39 @@
   </nav>
 
   <main class="contenedor">
+
     <div class="cards-resumen">
       <div class="card">
-        <h2>Total de empleados</h2>
-        <p id="totalEmployees">Cargando...</p>
+        <h2>Total empleados</h2>
+        <p class="stat-number" id="totalEmployees">—</p>
+        <small>Registrados en el sistema</small>
+      </div>
+      <div class="card">
+        <h2>Departamentos</h2>
+        <p class="stat-number" id="totalDepartamentos">—</p>
+        <small>Áreas activas</small>
+      </div>
+      <div class="card">
+        <h2>Incidencias</h2>
+        <p class="stat-number" id="totalIncidencias">—</p>
+        <small>Total registradas</small>
       </div>
     </div>
 
-    <div class="cards-resumen">
+    <div class="grid-dashboard">
       <section class="tabla-seccion">
         <h2>Empleados por departamento</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Departamento</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody id="tablaDepartamentosResumen"></tbody>
-        </table>
+        <div class="chart-container">
+          <canvas id="chartDepartamentos"></canvas>
+        </div>
       </section>
 
       <section class="tabla-seccion">
         <h2>Incidencias recientes</h2>
-        <ul id="listaIncidencias"></ul>
+        <ul class="lista-incidencias" id="listaIncidencias"></ul>
       </section>
     </div>
+
   </main>
 
   <script src="js/main.js"></script>

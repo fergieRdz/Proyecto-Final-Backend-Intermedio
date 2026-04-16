@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Detalle del Empleado</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <header class="header-simple">
@@ -21,33 +22,44 @@
   <main class="contenedor">
     <section class="card" id="detalleEmpleado"></section>
 
-    <section class="tabla-seccion">
-      <h2>Historial de títulos</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Desde</th>
-            <th>Hasta</th>
-          </tr>
-        </thead>
-        <tbody id="titlesTable"></tbody>
-      </table>
-    </section>
+    <div style="margin-top: 24px;">
+      <section class="tabla-seccion">
+        <h2>Evolución salarial</h2>
+        <div class="chart-container">
+          <canvas id="salaryChart"></canvas>
+        </div>
+      </section>
+    </div>
 
-    <section class="tabla-seccion">
-      <h2>Historial de salarios</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Salario</th>
-            <th>Desde</th>
-            <th>Hasta</th>
-          </tr>
-        </thead>
-        <tbody id="salariesTable"></tbody>
-      </table>
-    </section>
+    <div class="cards-resumen" style="margin-top: 24px;">
+      <section class="tabla-seccion">
+        <h2>Historial de títulos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Desde</th>
+              <th>Hasta</th>
+            </tr>
+          </thead>
+          <tbody id="titlesTable"></tbody>
+        </table>
+      </section>
+
+      <section class="tabla-seccion">
+        <h2>Historial de salarios</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Salario</th>
+              <th>Desde</th>
+              <th>Hasta</th>
+            </tr>
+          </thead>
+          <tbody id="salariesTable"></tbody>
+        </table>
+      </section>
+    </div>
   </main>
 
   <script src="js/detalle.js"></script>
