@@ -134,6 +134,86 @@ body {
   margin-bottom: 6px;
 }
 
+/* ── Weather section ─────────────────────────── */
+.seccion-clima {
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  color: white;
+}
+
+.seccion-clima h2 {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.clima-ciudad {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.clima-cuerpo {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.clima-principal {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.clima-icono {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.clima-temp {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  display: block;
+}
+
+.clima-condicion {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  margin-top: 4px;
+}
+
+.clima-detalles {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.clima-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.clima-detalle-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 700;
+}
+
+.clima-detalle-valor {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
 /* ── Chart ───────────────────────────────────── */
 .chart-container {
   position: relative;
@@ -340,5 +420,11 @@ table a:hover {
   .cards-resumen,
   .grid-dashboard {
     grid-template-columns: 1fr;
+  }
+
+  .clima-cuerpo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
   }
 }

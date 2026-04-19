@@ -18,17 +18,64 @@ function mostrarFecha() {
   document.getElementById('fechaActual').textContent = `📅 ${fecha}`;
 }
 
+// ── Weather helpers ───────────────────────────
+const WMO_CODES = {
+  0:  { label: 'Despejado',            icon: '☀️'  },
+  1:  { label: 'Mayormente despejado', icon: '🌤️' },
+  2:  { label: 'Parcialmente nublado', icon: '⛅'  },
+  3:  { label: 'Nublado',              icon: '☁️'  },
+  45: { label: 'Neblina',              icon: '🌫️' },
+  48: { label: 'Neblina helada',       icon: '🌫️' },
+  51: { label: 'Llovizna ligera',      icon: '🌦️' },
+  53: { label: 'Llovizna moderada',    icon: '🌦️' },
+  55: { label: 'Llovizna intensa',     icon: '🌧️' },
+  61: { label: 'Lluvia ligera',        icon: '🌧️' },
+  63: { label: 'Lluvia moderada',      icon: '🌧️' },
+  65: { label: 'Lluvia intensa',       icon: '🌧️' },
+  71: { label: 'Nieve ligera',         icon: '🌨️' },
+  73: { label: 'Nieve moderada',       icon: '🌨️' },
+  75: { label: 'Nieve intensa',        icon: '❄️'  },
+  80: { label: 'Chubascos ligeros',    icon: '🌦️' },
+  81: { label: 'Chubascos moderados',  icon: '🌧️' },
+  82: { label: 'Chubascos intensos',   icon: '⛈️'  },
+  95: { label: 'Tormenta eléctrica',   icon: '⛈️'  },
+  99: { label: 'Tormenta con granizo', icon: '⛈️'  },
+};
+
+function wmoInfo(code) {
+  return WMO_CODES[code] || { label: 'Desconocido', icon: '🌡️' };
+}
+
 // ── Weather widget ────────────────────────────
 async function cargarClima() {
   try {
-    const response = await fetch(
-      'https://api.open-meteo.com/v1/forecast?latitude=25.6866&longitude=-100.3161&current=temperature_2m,weathercode'
-    );
+    const url = 'https://api.open-meteo.com/v1/forecast' +
+      '?latitude=25.6866&longitude=-100.3161' +
+      '&current=temperature_2m,apparent_temperature,weathercode,' +
+      'windspeed_10m,relativehumidity_2m,precipitation';
+    const response = await fetch(url);
     const data = await response.json();
-    const temp = data.current.temperature_2m;
-    document.getElementById('climaActual').textContent = `🌡️ Monterrey: ${temp}°C`;
+    const c = data.current;
+
+    const { label, icon } = wmoInfo(c.weathercode);
+
+    // Header mini-widget
+    document.getElementById('climaActual').textContent = `${icon} Monterrey: ${c.temperature_2m}°C`;
+
+    // Main section
+    document.getElementById('climaIcono').textContent      = icon;
+    document.getElementById('climaTemp').textContent       = `${c.temperature_2m}°C`;
+    document.getElementById('climaCondicion').textContent  = label;
+    document.getElementById('climaSensacion').textContent  = `${c.apparent_temperature}°C`;
+    document.getElementById('climaViento').textContent     = `${c.windspeed_10m} km/h`;
+    document.getElementById('climaHumedad').textContent    = `${c.relativehumidity_2m}%`;
+    document.getElementById('climaPrecip').textContent     = `${c.precipitation} mm`;
+
+    const hora = new Date().toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('climaFecha').textContent = `Actualizado ${hora}`;
   } catch {
     document.getElementById('climaActual').textContent = '🌡️ Clima no disponible';
+    document.getElementById('climaCondicion').textContent = 'No disponible';
   }
 }
 
